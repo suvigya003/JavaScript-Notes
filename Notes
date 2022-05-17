@@ -1,0 +1,53 @@
+- Callbacks - Functions that are used as an argument to another function are called callback functions.
+
+  function divideByHalf(sum){
+  console.log(Math.floor(sum / 2));
+  }
+
+  function operationOnSum(num1,num2,operation){
+  var sum = num1 + num2;
+  operation(sum);
+  }
+
+  operationOnSum(3, 3, divideByHalf); // Outputs 3
+  
+- Memoization - Memoization is a form of caching where the return value of a function is cached based on its parameters. 
+  Memoization is used for expensive function calls. By using memoization we can store(cache) the computed results based on the parameters. 
+  If the same parameter is used again while invoking the function, instead of computing the result, we directly return the stored (cached) value.
+  Although using memoization saves time, it results in larger consumption of memory since we are storing all the computed results.
+  
+  function memoizedAddTo256(){
+  var cache = {};
+
+  return function(num){
+    if(num in cache){
+      console.log("cached value");
+      return cache[num]
+
+    }
+    else{
+      cache[num] = num + 256;
+      return cache[num];
+      }
+    }
+  }
+
+  var memoizedFunc = memoizedAddTo256();
+
+  memoizedFunc(20); // Normal return
+  memoizedFunc(20); // Cached return
+  
+- Constructor function - If we want to create multiple objects having similar properties and methods, constructor functions are used.
+  Name of a constructor function should always be written in Pascal Notation: every word should start with a capital letter.
+  
+  function Person(name,age,gender){
+  this.name = name;
+  this.age = age;
+  this.gender = gender;
+}
+
+var person1 = new Person("Vivek", 76, "male");
+console.log(person1);
+
+var person2 = new Person("Courtney", 34, "female");
+console.log(person2);
